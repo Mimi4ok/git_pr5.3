@@ -4,19 +4,26 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace UnitTest1
+namespace UnitTestZ
 {
-	TEST_CLASS(UnitTest1)
-	{
-	public:
+    TEST_CLASS(UnitTestZ)
+    {
+    public:
 
-		TEST_METHOD(TestZ)
-		{
-			double x = 2.0;
-			double expected = (cos(x) + 1) / (sin(x) * sin(x) + exp(x));
-			double result = z(x);
+        TEST_METHOD(TestZ)
+        {
+            double x = 0.5;
 
-			Assert::AreEqual(expected, result);
-		}
-	};
+            double a = 1, S = a;
+            for (int j = 1; j <= 7; j++) {
+                double R = (-x) / j;
+                a *= R;
+                S += a;
+            }
+            double expected = S / exp(x);
+            double result = z(x);
+
+            Assert::AreEqual(expected, result);
+        }
+    };
 }

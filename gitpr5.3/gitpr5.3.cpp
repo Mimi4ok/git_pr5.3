@@ -6,7 +6,7 @@
 #include <iomanip>
 using namespace std;
 
-double z(double x);
+double z(const double x);
 
 int main() {
     double k_p, k_k;
@@ -34,18 +34,16 @@ int main() {
     return 0;
 }
 
-double z(double x) {
+double z(const double x) {
     if (fabs(x) >= 1)
         return (cos(x) + 1) / (sin(x) * sin(x) + exp(x));
     else {
-        double S = 0;
-        for (int j = 0; j <= 7; j++) {
-            double fact = 1;
-            for (int i = 1; i <= j; i++)
-                fact *= i;
-
-            double term = pow(-1, j) * pow(x, j) / fact;
-            S += term;
+        double a = 1;
+        double S = a;
+        for (int j = 1; j <= 7; j++) {
+            double R = (-x) / j;
+            a *= R;
+            S += a;
         }
         return S / exp(x);
     }
